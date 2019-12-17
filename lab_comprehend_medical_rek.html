@@ -1,0 +1,179 @@
+
+	
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Amazon AI/ML Workshop</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+	
+	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Flexslider -->
+	<link rel="stylesheet" href="css/flexslider.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<link rel="stylesheet" id="theme-switch" href="css/style.css">
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Cookie -->
+	<script src="js/jquery.cookie.js"></script>
+	<script>
+	if ( $.cookie('styleCookie') === 'style-light.css') {
+		$('html, body').css('background', '#eeeeee');
+	} else if ($.cookie('styleCookie') === 'style.css') {
+		$('html, body').css('background', '#222222');
+	}
+	
+	</script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+
+	<!-- Viewport Units Buggyfill -->
+	<script src="js/viewport-units-buggyfill.js"></script>
+
+	<!-- Googgle Map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+	<script src="js/google_map.js"></script>
+
+	
+	<!-- Main JS  -->
+	<script src="js/main.js"></script>
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+
+	<body>
+	
+	<!-- Loader -->
+	<div class="sage-loader"></div>
+	
+	<div id="sage-page">
+
+			<div class="container">
+				<div class="animate-box">
+					<img src="images/aws_logo.png" style="width:80px; height:55px; float: left; vertical-align:middle">
+					<h1 style= "font-size:55px; font-family:'Work Sans', Arial, sans-serif;">
+						&nbsp;&nbsp;<span>Lab 7:</span> Comprehend Medical + Rekognition for Medical Image Deidentification<br>
+				    </h1>
+				    <h3> Using Comprehend Medical and Rekognition APIs from a Sagemaker notebook </h3>
+				</div>
+			</div>
+		</header>
+
+		<div class="js-sage-waypoint sage-project-detail" id="sage-main" data-colorbg="">
+			<div class="container">
+
+
+				<div class="row">
+					<div class="col-md-12">
+						
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 1</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Setup</p>
+								<p>In this lab, we’ll use Amazon Comprehend Medical and Amazon Rekognition to analyze 
+								medical images to identify and detect the Protected Health Information (PHI). We will 
+								be following an example in <a href="https://github.com/aws-samples/amazon-comprehend-medical-image-deidentification" target="_blank">this repository.</a></p>
+								
+								<p>Use the following steps to clone the following file in your already created notebook instance:</p>
+								<ul>
+									<li>Go to Jupyter</li>
+									<li>New > Terminal </li>
+									<li><code>cd SageMaker; git clone https://github.com/aws-samples/amazon-comprehend-medical-image-deidentification.git</code></li>
+									<li>Go to jupyter and open the ipynb notebook file <code>medical_image_de_id.ipynb</code> from the newly created directory.</li>
+								</ul>
+							</div>
+						</div>
+						
+						<div class="row row-bottom-padded-md animate-box">
+								<div class="col-md-3">
+									<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 2</span></h2>
+								</div>
+								<div class="col-md-9">
+									<p class="sage-lead">Modify IAM Role permission</p>
+									<p>We would need appropriate permission for the SageMaker role we are using for the notebook instance to call the AI 
+										services on our behalf. Please go to SageMaker console and find your notebook instance.</p>
+									<center><img src="images/lab_comprehend_medical_rek/pic1.png" style="width:90%"></center>
+									<p>Click on the instance and go to <b>Permissions and encryption</b> to find the IAM execution role (in the red box below).</p>
+									<center><img src="images/lab_comprehend_medical_rek/pic2.png" style="width:90%"></center>
+									<p>This opens up a new window/tab to the IAM role in the IAM console. We need to attach new policies that would allow the SageMaker
+										to call the AI services (Comprehend and Rekognition). Hit <b>Attach policies</b> button, search and check the two policies,
+										<code>ComprehendMedicalFullAccess</code> and <code>AmazonRekognitionFullAccess</code>, then hit <b>Attach policy</b> 
+										button to proceed.
+									</p>
+									<p>Once you have the IAM role set up, please go back to the notebook <code>medical_image_de_id.ipynb</code> and follow the instruction 
+										in the notebook.</p>
+									<h2><center>End Of Lab, <a href="index.html" class="transition">Click to Return Home</a></center></h2>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+	
+			<footer id="sage-footer" class="js-sage-waypoint">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12 text-center">
+							<p><small>&copy; 2008 - 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</small> </p>
+							<ul class="sage-social">
+								<li>
+									<a href="https://twitter.com/awscloud"><i class="icon-twitter"></i></a>
+								</li>
+								<li>
+									<a href="https://www.instagram.com/amazonwebservices/"><i class="icon-instagram"></i></a>
+								</li>
+								<li>
+									<a href="https://aws.amazon.com/blogs/aws/"><i class="icon-home"></i></a>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</footer>
+	
+		</div>
+	
+	
+	
+	</body>
+</html>

@@ -112,7 +112,7 @@
 									The following lab will create the necessary S3 bucket and SageMaker notebook instance that will be used throughout the workshop. 
 								<p><p>
 								<p class="sage-lead">Setting Things Up</p>
-									This lab assumes you have already been set up with an AWS user account with IAM permissions that allow SageMaker and related resources to be accessed and used.  If not, contact your company’s AWS administrator and have them create the user account and permissions for you.
+									This lab assumes you have already been set up with an AWS user account from Event Engine with IAM permissions that allow SageMaker and related resources to be accessed and used.  If not, contact your company’s AWS administrator and have them create the user account and permissions for you.
 								<p><p>
 								<p class="sage-lead">Create an S3 Bucket</p>
 								In exercises where you create a model training job, you save the following in an Amazon S3 bucket: 
@@ -124,7 +124,7 @@
 								<p>
 								Follow the instructions in <a href="https://docs.aws.amazon.com/AmazonS3/latest/user-guide/create-bucket.html" target="_blank">Create a Bucket</a> in the <i>Amazon Simple Storage Service Console User Guide</i>. Include <code>sagemaker</code> in the bucket name; for example, <code>sagemaker-datetime</code>. <p>
 
-								<b>Note:</b> Make sure to create your bucket in either <b>us-east-1 (N. Virginia)</b> 
+								<b>Note:</b> Make sure to create your bucket in <b>us-west-2 (Oregon)</b> 
 							</div>
 						</div>
 
@@ -135,7 +135,7 @@
 							<div class="col-md-9">
 								<p class="sage-lead">To create an Amazon SageMaker notebook instance</p>
 									<ol>
-										<li>Open the Amazon SageMaker console at <a href="https://console.aws.amazon.com/sagemaker/home?region=us-east-1" target="_blank">https://console.aws.amazon.com/sagemaker/home?region=us-east-1</a></li>
+										<li>Open the Amazon SageMaker console at <a href="https://console.aws.amazon.com/sagemaker/home?region=us-west-2" target="_blank">https://console.aws.amazon.com/sagemaker/home?region=us-west-2</a></li>
 										<li>Choose <b>Notebook instances</b>, then choose <b>Create notebook instance</b>.</li><br>
 										<center><img src="images/lab0/pic1.png" style="width:75%"></center><p>
 										<li>On the <b>Create notebook instance page</b>, provide the following information: 
