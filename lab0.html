@@ -1,0 +1,278 @@
+
+	
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Amazon SageMaker Workshop</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+	
+	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Flexslider -->
+	<link rel="stylesheet" href="css/flexslider.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<link rel="stylesheet" id="theme-switch" href="css/style.css">
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Cookie -->
+	<script src="js/jquery.cookie.js"></script>
+	<script>
+	if ( $.cookie('styleCookie') === 'style-light.css') {
+		$('html, body').css('background', '#eeeeee');
+	} else if ($.cookie('styleCookie') === 'style.css') {
+		$('html, body').css('background', '#222222');
+	}
+	
+	</script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+
+	<!-- Viewport Units Buggyfill -->
+	<script src="js/viewport-units-buggyfill.js"></script>
+
+	<!-- Googgle Map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+	<script src="js/google_map.js"></script>
+
+	
+	<!-- Main JS  -->
+	<script src="js/main.js"></script>
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+
+	<body>
+	
+	<!-- Loader -->
+	<div class="sage-loader"></div>
+	
+	<div id="sage-page">
+
+			<div class="container">
+				<div class="animate-box">
+					<img src="images/aws_logo.png" style="width:80px; height:55px; float: left; vertical-align:middle">
+					<h1 style= "font-size:55px; font-family:'Work Sans', Arial, sans-serif;">
+						&nbsp;&nbsp;<span>Lab 0:</span> Deep Learning AMI
+				    </h1>
+				</div>
+			</div>
+		</header>
+
+		<div class="js-sage-waypoint sage-project-detail" id="sage-main" data-colorbg="">
+			<div class="container">
+
+
+				<div class="row">
+					<div class="col-md-12">
+						
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 1</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Introduction</p>
+									Keras provides a higher level neural network API that is capable of running on top of MxNet, TensorFlow, CNTK or Theano. Keras creates another level of abstraction where it is possible to switch between underlying neural network framework (e.g., from TensorFlow to MxNet) without modifying the source code. Other benefits of using Keras include quick p.rototype development, modularity and ease of extensibility.<p>
+									This lab is designed to demonstrate how to run the Amazon Deep Learning AMI and will introduce the audience to:
+									<ul>
+										<li>Stepping through and modifying Jupyter Notebooks</li>
+										<li>Hands-on experience with:
+											<ul><li>Keras, LSTM, ConvNet, NLTK and Word2Vec</li></ul>
+										</li>
+									</ul>
+								<p><p>
+
+								<p class="sage-lead">Pre-requisite: Create a new Key Pair</p>
+								If you already have a key pair, you can <a href="#dlami">click here</a> skip these few steps.<p>
+								In this lab, you will need to create an EC2 instance using an SSH keypair.  The following steps outline creating a unique SSH keypair for you to use in this lab.
+								<ol>
+									<li>Sign into the AWS Management Console and open the Amazon EC2 console at <a href="https://console.aws.amazon.com/ec2" target="_blank">https://console.aws.amazon.com/ec2.</a></li>
+									<li>In the upper-right corner of the AWS Management Console, confirm you are in the desired AWS region (e.g., N. Virginia).</li>
+									<li>Click on <b>Key Pairs</b> in the NETWORK & SECURITY section near the bottom of the leftmost menu.  This will display a page to manage your SSH key pairs.</li>
+									<center><img src="images/lab-1/pic1.png" style="width:100%"></center><p>
+									<li>To create a new SSH key pair, click the <b>Create Key Pair</b> button at the top of the browser window.</li>
+									<center><img src="images/lab-1/pic2.png" style="width:100%"></center><p>
+									<li>5.	In the resulting pop up window, type [First Name]-[Last Name]-DLLab into the <b>Key Pair Name</b>: text box and click <b>Create</b>.</li>
+									<center><img src="images/lab-1/pic3.png" style="width:50%"></center><p>
+									<li>The page will download the file <i>“[Your-Name]-DLLab.pem”</i> to the local drive.  Follow the browser instructions to save the file to the default download location.</li>
+									<li>Remember the full path to the file .pem file you just downloaded.</li>
+								</ol>
+							</div>
+						</div>
+
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 2</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Launch the Deep Learning AMI</p>
+									<div id="dlami"></div>
+									This part provides setup instructions for launching a deep learning AMI, downloading the lab materials and launching the Jupyter notebook server.
+									<p>
+									<ol>
+									<li>Go to the <a href="https://aws.amazon.com/marketplace/pp/B077GCH38C" target="_blank">Deep Learning AMI</a> page on the AWS Marketplace and follow the instruction to launch a EC2 instance by clicking on the Continue button. Prefer a <b>p2.xlarge</b> for this exercise and make sure that the EC2 instance will be created in a public subnet.</li>
+									<center><img src="images/lab-1/pic4.png" style="width:50%"></center><p>
+									<li>Navigate to the <a href="https://console.aws.amazon.com/ec2/v2/home" target="_blank">EC2 Console</a> and click on <b>Instances</b></li>
+									<center><img src="images/lab-1/pic5.png" style="width:40%"></center><p>
+									We will now connect to the instance and create an SSH tunnel which will map a local port onto the EC2 instance’s local port. If you use a Mac, you can skip the following and go straight to <a href="#step21">Step 21</a>. If you use a Windows computer, make sure you have PuTTY installed and follow the next steps.
+									<li>In PuTTY, navigate to Connection, SSH, Tunnels</li>
+									<li>Enter the Source port 8888</li>
+									<center><img src="images/lab-1/pic6.png" style="width:70%"></center><p>
+									<li>Enter the public DNS of the EC2 instance with port number 8888 separated by colon (i.e. public_dns:port_number) as Destination</li>
+									<li>Click the Dynamic radio button</li>
+									<li>Click the <b>Add</b> button</li>
+									<center><img src="images/lab-1/pic7.png" style="width:70%"></center><p>
+									<li>Navigate to Connection &#8680 SSH &#8680 Auth</li>
+									<li>Click <b>Browse</b> to select the appropriate .ppk key file for the EC2 instance<br>
+										*<b>NOTE</b>* If you do not know how to convert your .pem to a .ppk, <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/putty.html#putty-private-key" target="_blank">click here</a></li>
+									<li>Navigate to Session</li>
+									<li>In the Host name or IP address box, enter the public DNS of the EC2 instance, prefixed by “ubuntu@”</li>
+									<li>Port is 22</li>
+									<center><img src="images/lab-1/pic8.png" style="width:70%"></center><p>
+									<li>Click the Open button to initiate the connection</li>
+									We have configured PuTTY to establish an SSH tunnel between your computer and the Deep Learning EC2 instance. We now need to make sure your browser is going to send traffic through this tunnel. The following works for Chrome and Internet Explorer.
+									<li>Open Start, Run and type <code>inetcpl.cpl</code> to summon the Internet Properties dialog.</li>
+									<li>In the Connections tab click <b>LAN Settings</b>.</li>
+									<li>Click on <b>Use a proxy server</b> for your LAN check box . </li>
+									<li>Click <b>Advanced</b></li>
+									<li>In the Socks field type 127.0.0.1 as the IP address (for localhost) and port 8888</li>
+									<center><img src="images/lab-1/pic9.png" style="width:70%"></center><p>
+									<li>19.	Click <b>OK</b>. Then click <b>OK</b>, and click <b>OK</b> again.</li>
+									<li>You should now be able to access Jupyter over the SSH tunnel. You can now skip the next step and move directly to <a href="#step22">Step 22.</a></li>
+									<li><div id="step21"></div>(this step for Mac or Linux users only) SSH to the EC2 instance using the following command in the terminal on a Mac. On a PC, use putty to connect.<br>
+<pre>ssh -L localhost:8888:localhost:8888 -i [pem file path and name] ubuntu@[ec2 server name]</pre><p><ec2 server name> is the Public DNS (IPv4).</li>
+									<center><img src="images/lab-1/pic10.png" style="width:100%"></center><p>
+									<center><img src="images/lab-1/pic11.png" style="width:100%"></center><p>
+									<li><div id="step22"></div>Download the python notebooks and other supporting files by typing:<br>
+<pre>wget https://s3.amazonaws.com/mldayasset.corp.amazon.com/tf_lab/sa_ml_keras_lab.tar.gz</pre></li>
+									<li>Extract the files by typing:<br>
+<pre>tar xf sa_ml_keras_lab.tar.gz</pre>
+									</li></ol>
+
+							</div>
+						</div>
+						
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 3</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Launch Jupyter Notebooks Server</p>
+								<ol>
+								<li>Install NLTK by running the following lines of code:<br>
+								<code>pip install nltk</code><br>
+								<code>pip install tensorflow</code><br>
+								<code>pip install keras</code><br>
+								<code>python3</code><br>
+								<ul><li><code>import nltk</code></li>
+									<li><code>nltk.download(‘punkt’)</code></li>
+									<li><code>nltk.download(‘wordnet’)</code></li>
+									<li><code>import keras</code></li>
+								</ul>
+								Hit <i>Ctrl+d</i> to exit python3 inteactive environment
+								</li>
+								<li>Change directory into:<br>
+								<code>cd ml_lab_keras/</code></li>
+								<li>Type <code>jupyter notebook</code> to start the Jupyter Notebook server</li>
+								<center><img src="images/lab-1/pic12.png" style="width:100%"></center><p>
+								<li><b>Paste the url</b> displayed from the command in last step in your <b>browser’s address bar</b> to launch the Jupyter notebook client.</li>
+								</ol>
+							</div>
+						</div>
+
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 4</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Launch Jupyter Notebooks</p>
+								You should see the following 1 notebook:
+								<ul>
+								<li>KERAS-LSTM-ConvNet-NLTK-Word2Vec-Sentiment-Lab.ipynb</li>
+								<center><img src="images/lab-1/pic13.png" style="width:100%"></center><p>
+								<li>Click the notebook to start the lab. Instructions continue on the Jupyter interface.
+									<ul><li>*<b>Note</b>* Make sure the notebook kernel in the top right is "Python 3"</li></ul></li>
+								</ul>
+								<p>
+								<p class="sage-lead">Conclusion</p>
+								In this lab you have learned the basic operations to launch the Amazon Deep Learning AMI, run Jupyter Notebooks and step through a sentiment analysis/sequence classification problem with Keras, LSTM, ConvNet, and Word2Vec.
+
+											<p><p>
+											<h2><center>End Of Lab, <a href="index.html" class="transition">Click to Return Home</a></center></h2>							
+							</div>
+						</div>
+							
+						</div>
+					</div>
+				</div> 
+
+	
+
+			</div>
+		</div>
+
+		<footer id="sage-footer" class="js-sage-waypoint">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p><small>&copy; 2018, Amazon Web Services, Inc. or its affiliates. All rights reserved.</small> </p>
+						<ul class="sage-social">
+							<li>
+								<a href="https://twitter.com/awscloud"><i class="icon-twitter"></i></a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/amazonwebservices/"><i class="icon-instagram"></i></a>
+							</li>
+							<li>
+								<a href="https://aws.amazon.com/blogs/aws/"><i class="icon-home"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+
+
+
+	</body>
+</html>
+
