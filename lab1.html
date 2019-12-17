@@ -137,13 +137,13 @@
 									<ol>
 										<li>Open the Amazon SageMaker console at <a href="https://console.aws.amazon.com/sagemaker/home?region=us-west-2" target="_blank">https://console.aws.amazon.com/sagemaker/home?region=us-west-2</a></li>
 										<li>Choose <b>Notebook instances</b>, then choose <b>Create notebook instance</b>.</li><br>
-										<center><img src="images/lab0/pic1.png" style="width:75%"></center><p>
+										<center><img src="images/lab1/pic1.png" style="width:75%"></center><p>
 										<li>On the <b>Create notebook instance page</b>, provide the following information: 
 											<ol><li>For <b>Notebook instance name</b>, type <code><b>SageMakerWorkshop</b></code>.</li>
 												<li>For <b>Instance type</b>, choose <code><b>ml.t2.medium</b></code>.</li>
 												<li>For <b>IAM role</b>, create an IAM role.
 												<ul><li>Choose <b>Create a new role</b>.</li></ul>
-												<center><img src="images/lab0/pic2.png" style="width:75%"></center><p>
+												<center><img src="images/lab1/pic2.png" style="width:75%"></center><p>
 												<ul><li>(Optional) If you want to use S3 buckets other than the one you created in Step 1 of this tutorial to store your input data and output, choose them.<p>
 
 													In Step 1 of this tutorial, you created an S3 bucket with <code>sagemaker</code> in its name. This IAM role automatically has permissions to use that bucket. The <code>AmazonSageMakerFullAccess</code> policy, which Amazon SageMaker attaches to the role, gives the role those permissions.<p>
@@ -171,7 +171,7 @@
 												<li>Choose <b>Create notebook instance</b>.<br>
 													In a few minutes, Amazon SageMaker launches an ML compute instance—in this case, a notebook instance—and attaches an ML storage volume to it. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries. For more information, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateNotebookInstance.html" target="_blank">CreateNotebookInstance API</a>. </li><p>
 												<li>When the status of the notebook instance is <code>InService</code>, choose <b>Open</b> next to its name to open the Juypter dashboard. 
-												<center><img src="images/lab0/pic3v2.png" style="width:100%"></center></li>
+												<center><img src="images/lab1/pic3v2.png" style="width:100%"></center></li>
 												<p>
 												The dashboard provides access to:
 												<ul>
