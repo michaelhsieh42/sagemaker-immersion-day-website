@@ -1,0 +1,238 @@
+
+	
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Amazon SageMaker Workshop</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+	
+	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Flexslider -->
+	<link rel="stylesheet" href="css/flexslider.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<link rel="stylesheet" id="theme-switch" href="css/style.css">
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Cookie -->
+	<script src="js/jquery.cookie.js"></script>
+	<script>
+	if ( $.cookie('styleCookie') === 'style-light.css') {
+		$('html, body').css('background', '#eeeeee');
+	} else if ($.cookie('styleCookie') === 'style.css') {
+		$('html, body').css('background', '#222222');
+	}
+	
+	</script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+
+	<!-- Viewport Units Buggyfill -->
+	<script src="js/viewport-units-buggyfill.js"></script>
+
+	<!-- Googgle Map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+	<script src="js/google_map.js"></script>
+
+	
+	<!-- Main JS  -->
+	<script src="js/main.js"></script>
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+
+	<body>
+	
+	<!-- Loader -->
+	<div class="sage-loader"></div>
+	
+	<div id="sage-page">
+
+			<div class="container">
+				<div class="animate-box">
+					<img src="images/aws_logo.png" style="width:80px; height:55px; float: left; vertical-align:middle">
+					<h1 style= "font-size:55px; font-family:'Work Sans', Arial, sans-serif;">
+						&nbsp;&nbsp;<span>Lab 3:</span> Image Classification with Model Optimization
+				    </h1>
+				</div>
+			</div>
+		</header>
+
+		<div class="js-sage-waypoint sage-project-detail" id="sage-main" data-colorbg="">
+			<div class="container">
+
+
+				<div class="row">
+					<div class="col-md-12">
+						
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 1</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Setup the Notebook</p>
+								<p>We’ll be using the end-to-end image multi-classification example in the sample-notebooks for this section of the workshop.<p>
+								Browse the following location: <code>Sagemaker Neo Compilation Jobs</code></p>
+
+								<img src="images/lab_image_classification_neo/pic1.png" style="width:90%"></center>
+								<p>Select the "Use" button next to the <code>Image-classification-fulltraining-highlevel-neo.ipynb</code> 
+									and select "Create copy" to launch the notebook in a new tab.</p>
+								<p>You should see this:</p>
+								<center><img src="images/lab_image_classification_neo/pic2.png" style="width:90%"></center>
+								<p>Please follow the instruction in the notebook and execute the cells. We will be training an image 
+									classification model and compare the model latency with or without Neo optimization.</p>
+							</div>
+						</div>
+
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 2</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Start Training Job</p>
+								<p>Run through the steps, reading about the process. This step will take about 3-5 minutes 
+									while it trains the model:</p>
+								<center><img src="images/lab_image_classification_neo/pic3.png" style="width:90%"></center>
+								<p>We can also see the training job information in the SageMaker console from the side bar 
+									<code>Training Jobs</code>:</p>
+								<center><img src="images/lab_image_classification_neo/pic4.png" style="width:90%"></center>
+								<p>When the training job is completed you will see the following:</p>
+								<center><img src="images/lab_image_classification_neo/pic5.png" style="width:90%"></center>
+								<p>or the job status in the SageMaker console turning <code>Completed</code>.</p>
+							</div>
+						</div>
+							
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 3</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Deploy Endpoint</p>
+								<p>Follow the instructions in the notebook to create the endpoint:</p>
+								<center><img src="images/lab_image_classification_neo/pic6.png" style="width:90%"></center>
+								<p>You can also see it being created in the SageMaker console from the side bar <code>Endpoints</code>:</p>
+								<center><img src="images/lab_image_classification_neo/pic7.png" style="width:90%"></center>
+								<p>Once the endpoint creation, which takes about 6-8 minutes, is completed you will see an exclamation 
+									mark in the end of the cell output, or the job status in the SageMaker console turning 
+									<code>Completed</code>.</p>
+							</div>
+						</div>
+
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 4</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Test Model</p>
+								<p>Follow the instructions in the notebook to test your model with this image:</p>
+								<center><img src="images/lab_image_classification_neo/080_0001.jpg" style="width:90%"></center>
+								<p>The output class detected by the network may not be accurate in this example. To limit the time taken and cost of training, 
+								we have trained the model only for 5 epochs. If the network is trained for more epochs (say 20), then the output class will 
+								be more accurate.</p>
+								<p>However in this example we are interested in understanding the latency improvement with the use of 
+									SageMaker Neo. We should proceed without optimizing the model accuracy.</p>
+								<p>Here we time the model inference latency. Excute the cell multiple times to get a sense of its average 
+									latency.</p>
+								<center><img src="images/lab_image_classification_neo/pic8.png" style="width:90%"></center>
+								
+							</div>
+						</div>
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 5</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Optimize Model</p>
+								<p>Follow the instructions in the notebook to compile the same model using SageMaker Neo:</p>
+								<center><img src="images/lab_image_classification_neo/pic9.png" style="width:90%"></center>
+								<p>Once it is completed, we will deploy the optimized model to the compute instance that we optimized for. 
+									Time the prediction with the optimized model. We compare the optimized predictions times to the vanilla predictions 
+									times.</p>
+
+								<p>As you can notice the inference time using our neo-optimized model is better than the original one. 
+									SageMaker Neo automatically optimizes machine learning models to perform at up to fourth the speed with no loss in 
+									accuracy. In the diagram below shows you how our neo-optimized model performs 3x better with ResNet 152 in C5.9xlarge 
+									instance. The originl model stands for the uncompiled model deployed on Flask container on May 10th, 2019 and 
+									neo-optimized model stands for the compiled model deployed on Neo-AI-DLR container. The data for each trial is the 
+									average of 1000 trys for each endpoint.</p>
+								<center><img src="images/lab_image_classification_neo/image-classification-latency.png" style="width:70%"></center>
+								
+								
+								<p><p>
+								<h2><center>End Of Lab, <a href="index.html" class="transition">Click to Return Home</a></center></h2>	
+							</div>
+						</div>
+					</div>
+				</div> 
+
+	
+
+			</div>
+		</div>
+
+		<footer id="sage-footer" class="js-sage-waypoint">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p><small>&copy; 2008 - 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</small> </p>
+						<ul class="sage-social">
+							<li>
+								<a href="https://twitter.com/awscloud"><i class="icon-twitter"></i></a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/amazonwebservices/"><i class="icon-instagram"></i></a>
+							</li>
+							<li>
+								<a href="https://aws.amazon.com/blogs/aws/"><i class="icon-home"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+
+
+
+	</body>
+</html>
+
