@@ -1,0 +1,277 @@
+
+	
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Amazon SageMaker Workshop</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+  	<!-- Facebook and Twitter integration -->
+	<meta property="og:title" content=""/>
+	<meta property="og:image" content=""/>
+	<meta property="og:url" content=""/>
+	<meta property="og:site_name" content=""/>
+	<meta property="og:description" content=""/>
+	<meta name="twitter:title" content="" />
+	<meta name="twitter:image" content="" />
+	<meta name="twitter:url" content="" />
+	<meta name="twitter:card" content="" />
+
+	<!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+	<link rel="shortcut icon" href="favicon.ico">
+	
+	<link href='https://fonts.googleapis.com/css?family=Work+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Playfair+Display:400,400italic,700italic,700' rel='stylesheet' type='text/css'>
+	<!-- Animate.css -->
+	<link rel="stylesheet" href="css/animate.css">
+	<!-- Flexslider -->
+	<link rel="stylesheet" href="css/flexslider.css">
+	<!-- Icomoon Icon Fonts-->
+	<link rel="stylesheet" href="css/icomoon.css">
+	<!-- Bootstrap  -->
+	<link rel="stylesheet" href="css/bootstrap.css">
+
+	<link rel="stylesheet" id="theme-switch" href="css/style.css">
+	
+	<!-- jQuery -->
+	<script src="js/jquery.min.js"></script>
+	<!-- jQuery Cookie -->
+	<script src="js/jquery.cookie.js"></script>
+	<script>
+	if ( $.cookie('styleCookie') === 'style-light.css') {
+		$('html, body').css('background', '#eeeeee');
+	} else if ($.cookie('styleCookie') === 'style.css') {
+		$('html, body').css('background', '#222222');
+	}
+	
+	</script>
+	<!-- jQuery Easing -->
+	<script src="js/jquery.easing.1.3.js"></script>
+	<!-- Bootstrap -->
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Waypoints -->
+	<script src="js/jquery.waypoints.min.js"></script>
+	<!-- Flexslider -->
+	<script src="js/jquery.flexslider-min.js"></script>
+
+	<!-- Viewport Units Buggyfill -->
+	<script src="js/viewport-units-buggyfill.js"></script>
+
+	<!-- Googgle Map -->
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCefOgb1ZWqYtj7raVSmN4PL2WkTrc-KyA&sensor=false"></script>
+	<script src="js/google_map.js"></script>
+
+	
+	<!-- Main JS  -->
+	<script src="js/main.js"></script>
+
+	<!-- Modernizr JS -->
+	<script src="js/modernizr-2.6.2.min.js"></script>
+	<!-- FOR IE9 below -->
+	<!--[if lt IE 9]>
+	<script src="js/respond.min.js"></script>
+	<![endif]-->
+
+	</head>
+
+	<body>
+	
+	<!-- Loader -->
+	<div class="sage-loader"></div>
+	
+	<div id="sage-page">
+
+			<div class="container">
+				<div class="animate-box">
+					<img src="images/aws_logo.png" style="width:80px; height:55px; float: left; vertical-align:middle">
+					<h1 style= "font-size:55px; font-family:'Work Sans', Arial, sans-serif;">
+						&nbsp;&nbsp;<span>Lab 2:</span> SageMaker End-to-End ML: Market targeting with XGBoost
+				    </h1>
+				</div>
+			</div>
+		</header>
+
+		<div class="js-sage-waypoint sage-project-detail" id="sage-main" data-colorbg="">
+			<div class="container">
+
+
+				<div class="row">
+					<div class="col-md-12">
+						
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 1</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Setup the Notebook</p>
+								We’ll be using a customer churn prediction example in the <code>SageMaker Examples</code> tab for this section of the workshop.<p>
+								Browse the following location: <code>Introduction to Applying Machine Learning</code>.
+
+								<center><img src="images/lab_sm_end2end/pic1.png" style="width:90%"></center>
+								<p>
+								Select the "Use" button next to the <code>xgboost_direct_marketing_sagemaker.ipynb</code> and select "Create copy" to launch the notebook in a new tab.
+								<br>
+								<br>
+								If asked, select <code>conda_python3</code> as the new kernel for the notebook. You should then see this:<br>
+								<center><img src="images/lab_sm_end2end/pic2.png" style="width:90%"></center>
+								<p>
+							</div>
+						</div>
+
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 2</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Execute the notebook</p>
+								<p>We need to specify a bucket so that we can save the training and validation data for steps in this notebook. Please assign your previously created bucket name to 
+								<code>bucket</code> variable in the first cell.</p>
+								<p>We will run through data exploration, training, and deploying the model(s) to a live endpoint. Because this is an imbalanced dataset, we will be adding an additional 
+									experiment to see if using <code>scale_pos_weight</code> in xgboost will help address class imbalance. This is a typical model A/B testing scenario, we will create two models,
+									of slight change in hyperparameter, and deploy them into a live endpoint. To do so, before executing the cell with <code>xgb.fit()</code>. Let's make the following change to the cell. </p>
+								
+<pre><code>sess = sagemaker.Session()
+xgb = sagemaker.estimator.Estimator(container,
+				role, 
+				train_instance_count=1, 
+				train_instance_type='ml.m4.xlarge',
+				output_path='s3://{}/{}/output'.format(bucket, prefix),
+				sagemaker_session=sess)
+xgb.set_hyperparameters(max_depth=5,
+			eta=0.2,
+			gamma=4,
+			min_child_weight=6,
+			subsample=0.8,
+			silent=0,
+			objective='binary:logistic',
+			num_round=100)
+
+xgb.fit({'train': s3_input_train, 'validation': s3_input_validation}, wait=False)
+
+# another training with scale_pos_weight to address the class imbalance.
+xgb_im = sagemaker.estimator.Estimator(container,
+				role, 
+				train_instance_count=1, 
+				train_instance_type='ml.m4.xlarge',
+				output_path='s3://{}/{}/output'.format(bucket, prefix),
+				sagemaker_session=sess)
+							
+xgb_im.set_hyperparameters(max_depth=5,
+			eta=0.2,
+			gamma=4,
+			min_child_weight=6,
+			subsample=0.8,
+			silent=0,
+			objective='binary:logistic',
+			num_round=100,
+			scale_pos_weight=8)
+
+xgb_im.fit({'train': s3_input_train, 'validation': s3_input_validation}, wait=False)</code></pre>
+								<p>This will create two training jobs simoutaneously. You can check the status of the training jobs in the training console.
+									Once they are completed we can deploy the models into production. We have two choices now, a) deploy a single model with 
+									<code>xgb.deploy()</code> or b) deploy two model production variants into one single endpoint to allow traffic control and 
+									A/B testing. Please add the follow codes into a new cell after <code>xgb.deploy()</code>.</p>
+<pre><code>## To create an endpoint with two model production variants
+import time
+sm = boto3.client('sagemaker')
+
+job_name_prefix = 'sagemaker-xgboost'
+timestamp = time.strftime('%Y-%m-%d-%H-%M-%S', time.gmtime())
+
+xgb_hosting_container = {
+	'Image': container,
+	'ModelDataUrl': xgb.model_data}
+
+response = sm.create_model(
+	ModelName=job_name_prefix+timestamp,
+	ExecutionRoleArn=role,
+	PrimaryContainer=xgb_hosting_container)
+
+xgb_im_hosting_container = {
+	'Image': container,
+	'ModelDataUrl': xgb_im.model_data}
+
+response_im = sm.create_model(
+	ModelName=job_name_prefix + '-im-' + timestamp,
+	ExecutionRoleArn=role,
+	PrimaryContainer=xgb_im_hosting_container)
+
+endpoint_config_name = job_name_prefix + '-epc-' + timestamp
+
+endpoint_config_response = sm.create_endpoint_config(
+	EndpointConfigName = endpoint_config_name,
+	ProductionVariants=[
+		{
+		'InstanceType':'ml.m4.xlarge',
+		'InitialInstanceCount':1,
+		'ModelName':job_name_prefix+timestamp,
+		'VariantName':'xgb',
+		'InitialVariantWeight':1 # 50/50 split with the second model
+		},
+		{
+		'InstanceType':'ml.m4.xlarge',
+		'InitialInstanceCount':1,
+		'ModelName':job_name_prefix + '-im-' + timestamp,
+		'VariantName':'xgb-im',
+		'InitialVariantWeight':1
+		}
+	])
+
+endpoint_name = job_name_prefix + '-ep-' + timestamp
+print('Endpoint name: {}'.format(endpoint_name))
+
+endpoint_params = {
+	'EndpointName': endpoint_name,
+	'EndpointConfigName': endpoint_config_name,
+}
+endpoint_response = sm.create_endpoint(**endpoint_params)</code></pre>
+								<p>Now we have another endpoint with two models running at the same time taking 50% of traffic each.</p>
+							</div>
+						</div>
+							
+								<p><p>
+								<h2><center>End Of Lab, <a href="index.html" class="transition">Click to Return Home</a></center></h2>	
+							</div>
+						</div>
+						</div>
+					</div>
+				</div> 
+
+	
+
+			</div>
+		</div>
+
+		<footer id="sage-footer" class="js-sage-waypoint">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p><small>&copy; 2008 - 2020, Amazon Web Services, Inc. or its affiliates. All rights reserved.</small> </p>
+						<ul class="sage-social">
+							<li>
+								<a href="https://twitter.com/awscloud"><i class="icon-twitter"></i></a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/amazonwebservices/"><i class="icon-instagram"></i></a>
+							</li>
+							<li>
+								<a href="https://aws.amazon.com/blogs/aws/"><i class="icon-home"></i></a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</footer>
+
+	</div>
+
+
+
+	</body>
+</html>
+

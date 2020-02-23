@@ -1,3 +1,5 @@
+
+	
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -6,7 +8,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Amazon AI/ML Workshop</title>
+	<title>Amazon SageMaker Workshop</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
   	<!-- Facebook and Twitter integration -->
@@ -35,8 +37,7 @@
 	<link rel="stylesheet" href="css/bootstrap.css">
 
 	<link rel="stylesheet" id="theme-switch" href="css/style.css">
-
-
+	
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
 	<!-- jQuery Cookie -->
@@ -84,61 +85,65 @@
 	<div class="sage-loader"></div>
 	
 	<div id="sage-page">
-		<nav id="sage-nav" role="navigation">
-			<ul>
-				<li class="animate-box"><a href="lab1.html" class="transition">Lab 1</a></li>
-				<li class="animate-box"><a href="lab_sm_end2end.html" class="transition">Lab 2</a></li>
-				<li class="animate-box"><a href="lab_sm_multimodel.html" class="transition">Lab 3</a></li>
-				<li class="animate-box"><a href="lab_sm_batchtransform.html" class="transition">Lab 4</a></li>
-				<li class="animate-box"><a href="lab_sm_localmode.html" class="transition">Lab 5</a></li>
-				<li class="animate-box"><a href="lab_sm_byo.html" class="transition">Lab 6</a></li>
-			</ul>
-		</nav>
-		
-		<header id="sage-header" role="banner" class="sage-project js-sage-waypoint no-border" data-colorbg="#222222" data-next="yes">
+
 			<div class="container">
-				<div class="sage-text-wrap animate-box">
-						<center><img src="images/sagemkr.png" height="150px" width="150px"><p>
-						<h1>AI/ML Immersion Day</h1>
-						<h2>Hosted by <a href="http://aws.amazon.com/" target="_blank">Amazon Web Services</a>&nbsp;<img src="images/aws_logo.png" height="50px" width="75px"></h2>
-						</center>
+				<div class="animate-box">
+					<img src="images/aws_logo.png" style="width:80px; height:55px; float: left; vertical-align:middle">
+					<h1 style= "font-size:55px; font-family:'Work Sans', Arial, sans-serif;">
+						&nbsp;&nbsp;<span>Lab 4:</span> Batch Transformation
+				    </h1>
 				</div>
 			</div>
+		</header>
 
-				<div class="btn-next animate-box sage-learn-more">
-				<a href="#agenda" class="scroll">
-					<center><span style="color: #222222;">Agenda Below</span></center>
-					<i class="icon-chevron-down"></i>
-				</a>
-				</div>
-			</header>
-
-			<div class="js-sage-waypoint sage-project-detail" id="sage-main" data-colorbg="">
+		<div class="js-sage-waypoint sage-project-detail" id="sage-main" data-colorbg="">
 			<div class="container">
-				<div class="animate-box" style="width:100%; height:100%;">
-					<div id="agenda"></div>
-						<center><h3>Agenda</h3></center>
-							<!--
-							<h4>Session 1 - Introduction to the AWS AI/ML Stack (40 mins)</h4>
-							<h4>Session 2 - Sagemaker Hands-On Labs (2.5 hr) </h4> 
-							-->
-								<h4>&nbsp;&nbsp;<a href="lab1.html" target="_blank">Lab 1 - SageMaker Notebook Creation</a></h4>
-								<i>&nbsp;&nbsp;&nbsp;Setting up SageMaker notebook instance and S3 bucket for workshop</i>
+
+
+				<div class="row">
+					<div class="col-md-12">
+						
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 1</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Setup the Notebook</p>
+								We’ll be using a SageMaker example in the <code>SageMaker Examples</code> tab for 
+								this section of the workshop.<p>
+								Browse the following location: <code>Sagemaker Batch Transform</code>
+
+								<center><img src="images/lab_sm_batchtransform/pic1.png" style="width:90%"></center>
+								<p>
+								Select the "Use" button next to the <code>Batch Transform - breast cancer prediction with high level SDK.ipynb</code> and select "Create copy" to launch the notebook in a new tab.
 								<br>
-								<h4>&nbsp;&nbsp;<a href="lab_sm_end2end.html" target="_blank">Lab 2 - SageMaker End-to-End ML: Market targeting with XGBoost</a></h4>
-								<i>&nbsp;&nbsp;&nbsp;An end-to-end workflow to demonstrate the functionality of SageMaker</i>
 								<br>
-								<h4>&nbsp;&nbsp;<a href="lab_sm_multimodel.html" target="_blank">Lab 3 - Multi-model endpoint</a></h4>
-						  	  	<i>&nbsp;&nbsp;&nbsp;Create an endpoint that seamlessly hosts up to thousands of models.</i><br>
-								<h4>&nbsp;&nbsp;<a href="lab_sm_batchtransform.html" target="_blank">Lab 4 - Batch Transformation</a></h4>
-								<i>&nbsp;&nbsp;&nbsp;Make prediction on data in batches</i>
-								<h4>&nbsp;&nbsp;<a href="lab_sm_localmode.html" target="_blank">Lab 5 - SageMaker Training Script/Local Mode</a></h4>
-								<i>&nbsp;&nbsp;&nbsp;Prototyping locally in SageMaker for fast development</i>
-								<h4>&nbsp;&nbsp;<a href="lab_sm_byo.html" target="_blank">Lab 6 - Bring your own code/model/container </a></h4>
-								<i>&nbsp;&nbsp;&nbsp;Use artifacts built outside of SageMaker in SageMaker</i>
-								<br>
+								If asked, select <code>conda_python3</code> as the new kernel for the notebook. You should then see this:<br>
+								<center><img src="images/lab_sm_batchtransform/pic2.png" style="width:90%"></center>
+								<p>
+							</div>
+						</div>
+
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 2</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Execute the notebook</p>
+								Please follow the instruction in the notebook.
+							</div>
+						</div>
+							
+								<p><p>
+								<h2><center>End Of Lab, <a href="index.html" class="transition">Click to Return Home</a></center></h2>	
+							</div>
+						</div>
+						</div>
 					</div>
-				</div>
+				</div> 
+
+	
+
 			</div>
 		</div>
 
@@ -164,6 +169,8 @@
 		</footer>
 
 	</div>
+
+
 
 	</body>
 </html>

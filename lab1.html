@@ -138,6 +138,7 @@
 										<li>Open the Amazon SageMaker console at <a href="https://console.aws.amazon.com/sagemaker/home?region=us-west-2" target="_blank">https://console.aws.amazon.com/sagemaker/home?region=us-west-2</a></li>
 										<li>Choose <b>Notebook instances</b>, then choose <b>Create notebook instance</b>.</li><br>
 										<center><img src="images/lab1/pic1.png" style="width:75%"></center><p>
+										<center><img src="images/lab1/pic1-2.png" style="width:75%"></center><p></p>
 										<li>On the <b>Create notebook instance page</b>, provide the following information: 
 											<ol><li>For <b>Notebook instance name</b>, type <code><b>SageMakerWorkshop</b></code>.</li>
 												<li>For <b>Instance type</b>, choose <code><b>ml.t2.medium</b></code>.</li>
@@ -155,7 +156,7 @@
 													<ul><li>If you're not concerned about users in your AWS account accessing your data, choose <b>Any S3 bucket</b></li>
 														<li>If your account has sensitive data (such as Human Resources information), restrict access by choosing <b>Specific S3 buckets</b>. You can update the permissions policy attached to the role you are creating later.</li>
 														<li>To explicitly control access, Restrict access by choosing <b>None</b>. use bucket and object names and tags as supported by the <code>AmazonSageMakerFullAccess</code> policy. For more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html#sagemaker-roles-amazonsagemakerfullaccess-policy" target="_blank">Using the AWS Managed Permission Policy (AmazonSageMakerFullAccess)</a> for an Execution Role.</li></ul> </li></ul><p>
-												<li>Choose <b>Create role</b>.<p>
+													<li>Choose <b>Create role</b>.<p>
 													Amazon SageMaker creates an IAM role named <code>AmazonSageMaker-ExecutionRole-YYYYMMDDTHHmmSS</code>. For example, <code>AmazonSageMaker-ExecutionRole-20171125T090800</code>. <p>
 
 													To see the policies that are attached to the role, use the IAM console.<br>
@@ -167,7 +168,13 @@
 														<li>The <code>AmazonSageMakerFullAccess</code> AWS managed policy.</li> 
 														<li>If you specified access to additional S3 bucket(s) when creating this role, the customer managed policy attached to the role. The name of the customer managed policy is <code>AmazonSageMaker-ExecutionPolicy-YYYYMMDDTHHmmSS</code>.</li>
 													</ul> 
-													For more information about creating your own IAM role, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html" target="_blank">Amazon SageMaker Roles</a>. </li></ol><p>
+													For more information about creating your own IAM role, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html" target="_blank">Amazon SageMaker Roles</a>. 
+													<li>For <b>Network</b>, Choose <code>No VPC</code>.</li>
+													<li>For <b>Git repositories</b>, you may include git repositories for your work/projects. For example, we would like to get amazon sagemaker example repository connected to the notebook instance, to do so, in Repository, 
+														choose <code>Clone a public Git repository to this notebook instance only</code>. And in the next cell, input in the amazon sagemaker example repository URL <a href="https://github.com/awslabs/amazon-sagemaker-examples.git" target="_blank">https://github.com/awslabs/amazon-sagemaker-examples.git</a>.</li>
+												</li></ol><p>
+													
+													
 												<li>Choose <b>Create notebook instance</b>.<br>
 													In a few minutes, Amazon SageMaker launches an ML compute instance—in this case, a notebook instance—and attaches an ML storage volume to it. The notebook instance has a preconfigured Jupyter notebook server and a set of Anaconda libraries. For more information, see the <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateNotebookInstance.html" target="_blank">CreateNotebookInstance API</a>. </li><p>
 												<li>When the status of the notebook instance is <code>InService</code>, choose <b>Open</b> next to its name to open the Juypter dashboard. 
@@ -200,7 +207,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<p><small>&copy; 2008 - 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</small> </p>
+						<p><small>&copy; 2008 - 2020, Amazon Web Services, Inc. or its affiliates. All rights reserved.</small> </p>
 						<ul class="sage-social">
 							<li>
 								<a href="https://twitter.com/awscloud"><i class="icon-twitter"></i></a>

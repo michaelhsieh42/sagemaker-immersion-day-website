@@ -8,7 +8,7 @@
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Amazon AI/ML Workshop</title>
+	<title>Amazon SageMaker Workshop</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
   	<!-- Facebook and Twitter integration -->
@@ -90,9 +90,8 @@
 				<div class="animate-box">
 					<img src="images/aws_logo.png" style="width:80px; height:55px; float: left; vertical-align:middle">
 					<h1 style= "font-size:55px; font-family:'Work Sans', Arial, sans-serif;">
-						&nbsp;&nbsp;<span>Lab 7:</span> Comprehend Medical + Rekognition for Medical Image Deidentification<br>
+						&nbsp;&nbsp;<span>Lab 5:</span> SageMaker Training Script/Local Mode
 				    </h1>
-				    <h3> Using Comprehend Medical and Rekognition APIs from a Sagemaker notebook </h3>
 				</div>
 			</div>
 		</header>
@@ -103,77 +102,87 @@
 
 				<div class="row">
 					<div class="col-md-12">
-						
+						<!--
 						<div class="row row-bottom-padded-md animate-box">
 							<div class="col-md-3">
 								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 1</span></h2>
 							</div>
 							<div class="col-md-9">
-								<p class="sage-lead">Setup</p>
-								<p>In this lab, we’ll use Amazon Comprehend Medical and Amazon Rekognition to analyze 
-								medical images to identify and detect the Protected Health Information (PHI). We will 
-								be following an example in <a href="https://github.com/aws-samples/amazon-comprehend-medical-image-deidentification" target="_blank">this repository.</a></p>
-								
-								<p>Use the following steps to clone the following file in your already created notebook instance:</p>
-								<ul>
-									<li>Go to Jupyter</li>
-									<li>New > Terminal </li>
-									<li><code>cd SageMaker; git clone https://github.com/aws-samples/amazon-comprehend-medical-image-deidentification.git</code></li>
-									<li>Go to jupyter and open the ipynb notebook file <code>medical_image_de_id.ipynb</code> from the newly created directory.</li>
-								</ul>
+								<p class="sage-lead">Resize the notebook instance</p>
+								For this lab, we need a more powerful instance in order to run a neural network training 
+								locally inside the notebook instead of in a separate compute infrastructure.
 							</div>
 						</div>
-						
+						-->
+
+
 						<div class="row row-bottom-padded-md animate-box">
-								<div class="col-md-3">
-									<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 2</span></h2>
-								</div>
-								<div class="col-md-9">
-									<p class="sage-lead">Modify IAM Role permission</p>
-									<p>We would need appropriate permission for the SageMaker role we are using for the notebook instance to call the AI 
-										services on our behalf. Please go to SageMaker console and find your notebook instance.</p>
-									<center><img src="images/lab_comprehend_medical_rek/pic1.png" style="width:90%"></center>
-									<p>Click on the instance and go to <b>Permissions and encryption</b> to find the IAM execution role (in the red box below).</p>
-									<center><img src="images/lab_comprehend_medical_rek/pic2.png" style="width:90%"></center>
-									<p>This opens up a new window/tab to the IAM role in the IAM console. We need to attach new policies that would allow the SageMaker
-										to call the AI services (Comprehend and Rekognition). Hit <b>Attach policies</b> button, search and check the two policies,
-										<code>ComprehendMedicalFullAccess</code> and <code>AmazonRekognitionFullAccess</code>, then hit <b>Attach policy</b> 
-										button to proceed.
-									</p>
-									<p>Once you have the IAM role set up, please go back to the notebook <code>medical_image_de_id.ipynb</code> and follow the instruction 
-										in the notebook.</p>
-									<h2><center>End Of Lab, <a href="index.html" class="transition">Click to Return Home</a></center></h2>
-								</div>
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 1</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Setup the Notebook</p>
+								We’ll be using a SageMaker example in the <code>SageMaker Examples</code> tab for this section of the workshop.<p>
+								Browse the following location: <code>Sagemaker Python SDK</code>
+
+								<p>
+								Select the "Use" button next to the <code>tensorflow_script_mode_quickstart.ipynb</code> and select "Create copy" to launch the notebook in a new tab.
+								<br>
+								<br>
+								If asked, select <code>conda_tensorflow_p36</code> as the new kernel for the notebook. You should then see this:<br>
+								<center><img src="images/lab_sm_localmode/pic1.png" style="width:90%"></center>
+								<p>
 							</div>
 						</div>
+
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 2</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Execute the notebook</p>
+								Please follow the instruction in the notebook.
+							</div>
+						</div>
+							
+								<p><p>
+								<h2><center>End Of Lab, <a href="index.html" class="transition">Click to Return Home</a></center></h2>	
+							</div>
+						</div>
+						</div>
+					</div>
+				</div> 
+
+	
+
+			</div>
+		</div>
+
+		<footer id="sage-footer" class="js-sage-waypoint">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 text-center">
+						<p><small>&copy; 2008 - 2020, Amazon Web Services, Inc. or its affiliates. All rights reserved.</small> </p>
+						<ul class="sage-social">
+							<li>
+								<a href="https://twitter.com/awscloud"><i class="icon-twitter"></i></a>
+							</li>
+							<li>
+								<a href="https://www.instagram.com/amazonwebservices/"><i class="icon-instagram"></i></a>
+							</li>
+							<li>
+								<a href="https://aws.amazon.com/blogs/aws/"><i class="icon-home"></i></a>
+							</li>
+						</ul>
 					</div>
 				</div>
 			</div>
-	
-			<footer id="sage-footer" class="js-sage-waypoint">
-				<div class="container">
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<p><small>&copy; 2008 - 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</small> </p>
-							<ul class="sage-social">
-								<li>
-									<a href="https://twitter.com/awscloud"><i class="icon-twitter"></i></a>
-								</li>
-								<li>
-									<a href="https://www.instagram.com/amazonwebservices/"><i class="icon-instagram"></i></a>
-								</li>
-								<li>
-									<a href="https://aws.amazon.com/blogs/aws/"><i class="icon-home"></i></a>
-								</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</footer>
-	
-		</div>
-	
-	
-	
+		</footer>
+
+	</div>
+
+
+
 	</body>
 </html>
+

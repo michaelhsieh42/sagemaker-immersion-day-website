@@ -90,7 +90,7 @@
 				<div class="animate-box">
 					<img src="images/aws_logo.png" style="width:80px; height:55px; float: left; vertical-align:middle">
 					<h1 style= "font-size:55px; font-family:'Work Sans', Arial, sans-serif;">
-						&nbsp;&nbsp;<span>Lab 2:</span> SageMaker Ground Truth for Image Classification
+						&nbsp;&nbsp;<span>Lab 3:</span> SageMaker Multi-model endpoint deployment
 				    </h1>
 				</div>
 			</div>
@@ -109,17 +109,13 @@
 							</div>
 							<div class="col-md-9">
 								<p class="sage-lead">Setup the Notebook</p>
-								We’ll be using a SageMaker Ground Truth example in the <code>SageMaker Examples</code> tab for this section of the workshop.<p>
-								Browse the following location: <code>Ground Truth Labeling Jobs</code>
-
-								<center><img src="images/lab_sm_groundtruth/pic1.png" style="width:90%"></center>
-								<p>
-								Select the "Use" button next to the <code>from_unlabeled_data_to_deployed_machine_learning_model_ground_truth_demo_image_classification.ipynb</code> and select "Create copy" to launch the notebook in a new tab.
+								We’ll be using a SageMaker example in the <code>SageMaker Examples</code> tab for this section of the workshop.<p>
+								Browse the following location: <code>Advanced Functionality</code> to find the <code>xgboost_multi_model_endpoint_home_value.ipynb</code>.
+								Select the "Use" button next to the <code>xgboost_multi_model_endpoint_home_value.ipynb</code> and select "Create copy" to launch the notebook in a new tab.
 								<br>
 								<br>
 								If asked, select <code>conda_python3</code> as the new kernel for the notebook. You should then see this:<br>
-								<center><img src="images/lab_sm_groundtruth/pic2.png" style="width:90%"></center>
-								<p>
+								<center><img src="images/lab_sm_multimodel/pic1.png" style="width:90%"></center>
 							</div>
 						</div>
 
@@ -128,10 +124,42 @@
 								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 2</span></h2>
 							</div>
 							<div class="col-md-9">
-								<p class="sage-lead">Create and Run a Ground Truth Labeling Job</p>
-								This entire lab will take about 3 hours because we are asking a team of workers to label the images. We will execute the notebook only upto <em>2.F "Submit the Ground Truth job request"</em> in this hour. We will resume the rest of the notebook later.
-								<br>
-								Please follow the instruction in the notebook upto <em>2.F</em>. For now, set <code>RUN_FULL_AL_DEMO = False</code> in the first cell to only label a subset of images as a demo.
+								<p class="sage-lead">Set IAM permission</p>
+								We will build a container that fulfills all of the multi-model endpoint container requirements, and then upload 
+								that image to Amazon Elastic Container Registry (ECR). Because uploading the image to ECR may create a new ECR 
+								repository, this notebook requires permissions in addition to the regular SageMakerFullAccess permissions. The 
+								easiest way to add these permissions is simply to add the managed policy <code>AmazonEC2ContainerRegistryFullAccess</code> 
+								to the role that you used to start your notebook instance.
+								<p>Please go back to SageMaker console, locate the notebook instance and click for detail. 
+
+									<center><img src="images/lab_sm_multimodel/pic2.png" style="width:90%"></center>
+									
+									You can find the IAM permission used for the notebook instance in the <b>Permissions and encryption</b> section.
+									Please click on the <b>IAM role ARN</b> which will take you to IAM console.</p>
+									
+									<center><img src="images/lab_sm_multimodel/pic3.png" style="width:90%"></center>
+
+									Click <b>Attach policies</b> button.
+
+									Search for <code>AmazonEC2ContainerRegistryFullAccess</code>, an AWS managed policy, and check the policy. Hit 
+									<b>Attach policy</b> button.
+
+									<center><img src="images/lab_sm_multimodel/pic4.png" style="width:90%"></center>
+
+									Now you have attached the <code>AmazonEC2ContainerRegistryFullAccess</code> policy to the notebook execution role. 
+									There's no need to restart your notebook instance when you do this, the new permissions will be available immediately.
+								</p>
+
+							</div>
+						</div>
+
+						<div class="row row-bottom-padded-md animate-box">
+							<div class="col-md-3">
+								<h2 class="sage-section-heading"><span class="sage-number">S<sup>tep</sup> 3</span></h2>
+							</div>
+							<div class="col-md-9">
+								<p class="sage-lead">Execute the notebook</p>
+								Please follow the instruction in the notebook.
 							</div>
 						</div>
 							
@@ -152,7 +180,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-12 text-center">
-						<p><small>&copy; 2008 - 2019, Amazon Web Services, Inc. or its affiliates. All rights reserved.</small> </p>
+						<p><small>&copy; 2008 - 2020, Amazon Web Services, Inc. or its affiliates. All rights reserved.</small> </p>
 						<ul class="sage-social">
 							<li>
 								<a href="https://twitter.com/awscloud"><i class="icon-twitter"></i></a>
